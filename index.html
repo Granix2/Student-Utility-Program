@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Utility Program</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-graduation-cap"></i> Student Utility Program</h1>
+            <p>Your all-in-one academic companion</p>
+        </div>
+
+        <div id="menu" class="menu-section">
+            <h2 class="menu-title">Choose Your Tool</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <button onclick="showCalculator('percentage')">
+                        <span class="icon"><i class="fas fa-percentage"></i></span>
+                        Percentage Calculator
+                    </button>
+                </div>
+                <div class="menu-item">
+                    <button onclick="showCalculator('cgpa')">
+                        <span class="icon"><i class="fas fa-chart-line"></i></span>
+                        CGPA Calculator
+                    </button>
+                </div>
+                <div class="menu-item">
+                    <button onclick="showCalculator('fibonacci')">
+                        <span class="icon"><i class="fas fa-wave-square"></i></span>
+                        Fibonacci Generator
+                    </button>
+                </div>
+                <div class="menu-item">
+                    <button onclick="showCalculator('factorial')">
+                        <span class="icon"><i class="fas fa-calculator"></i></span>
+                        Factorial Calculator
+                    </button>
+                </div>
+                <div class="menu-item">
+                    <button onclick="showCalculator('unit')">
+                        <span class="icon"><i class="fas fa-exchange-alt"></i></span>
+                        Unit Converter
+                    </button>
+                </div>
+                <div class="menu-item">
+                    <button onclick="showCalculator('physics')">
+                        <span class="icon"><i class="fas fa-atom"></i></span>
+                        Physics Calculator
+                    </button>
+                </div>
+                <div class="menu-item">
+                    <button onclick="showCalculator('number')">
+                        <span class="icon"><i class="fas fa-hashtag"></i></span>
+                        Number Tools
+                    </button>
+                </div>
+                <div class="menu-item">
+                    <button onclick="exitProgram()" class="exit-btn">
+                        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                        Exit Program
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="calculators" class="calculator-section">
+            <!-- Percentage Calculator -->
+            <div id="percentage" class="calculator hidden">
+                <h2 class="calculator-title"><i class="fas fa-percentage"></i> Percentage Calculator</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="obtainedMarks">Obtained Marks</label>
+                        <input type="number" id="obtainedMarks" placeholder="Enter obtained marks">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalMarks">Total Marks</label>
+                        <input type="number" id="totalMarks" placeholder="Enter total marks">
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button onclick="calculatePercentage()" class="btn btn-success">
+                        <i class="fas fa-equals"></i> Calculate Percentage
+                    </button>
+                    <button onclick="backToMenu()" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Menu
+                    </button>
+                </div>
+                <div id="percentageResult" class="result-display hidden"></div>
+            </div>
+
+            <!-- CGPA Calculator -->
+            <div id="cgpa" class="calculator hidden">
+                <h2 class="calculator-title"><i class="fas fa-chart-line"></i> CGPA Calculator</h2>
+                <div class="form-group">
+                    <label for="numSubjects">Number of Subjects</label>
+                    <input type="number" id="numSubjects" placeholder="Enter number of subjects">
+                </div>
+                <div class="button-group">
+                    <button onclick="setupCGPAInputs()" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Setup Subjects
+                    </button>
+                </div>
+                <div id="cgpaInputs" class="cgpa-subjects"></div>
+                <div class="button-group">
+                    <button onclick="calculateCGPA()" class="btn btn-success">
+                        <i class="fas fa-calculator"></i> Calculate CGPA
+                    </button>
+                    <button onclick="backToMenu()" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Menu
+                    </button>
+                </div>
+                <div id="cgpaResult" class="result-display hidden"></div>
+            </div>
+
+            <!-- Fibonacci Generator -->
+            <div id="fibonacci" class="calculator hidden">
+                <h2 class="calculator-title"><i class="fas fa-wave-square"></i> Fibonacci Generator</h2>
+                <div class="form-group">
+                    <label for="fibTerms">Number of Terms</label>
+                    <input type="number" id="fibTerms" placeholder="Enter number of terms">
+                </div>
+                <div class="button-group">
+                    <button onclick="generateFibonacci()" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Generate Sequence
+                    </button>
+                    <button onclick="backToMenu()" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Menu
+                    </button>
+                </div>
+                <div id="fibResult" class="result-display hidden"></div>
+            </div>
+
+            <!-- Factorial Calculator -->
+            <div id="factorial" class="calculator hidden">
+                <h2 class="calculator-title"><i class="fas fa-calculator"></i> Factorial Calculator</h2>
+                <div class="form-group">
+                    <label for="factNum">Number</label>
+                    <input type="number" id="factNum" placeholder="Enter a non-negative integer">
+                </div>
+                <div class="button-group">
+                    <button onclick="calculateFactorial()" class="btn btn-primary">
+                        <i class="fas fa-calculator"></i> Calculate Factorial
+                    </button>
+                    <button onclick="backToMenu()" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Menu
+                    </button>
+                </div>
+                <div id="factResult" class="result-display hidden"></div>
+            </div>
+
+            <!-- Unit Converter -->
+            <div id="unit" class="calculator hidden">
+                <h2 class="calculator-title"><i class="fas fa-exchange-alt"></i> Unit Converter</h2>
+                <div class="form-group">
+                    <label for="unitType">Conversion Type</label>
+                    <select id="unitType">
+                        <option value="temp">🌡️ Temperature</option>
+                        <option value="length">📏 Length</option>
+                        <option value="weight">⚖️ Weight</option>
+                    </select>
+                </div>
+                <div id="unitInputs"></div>
+                <div class="button-group">
+                    <button onclick="convertUnit()" class="btn btn-primary">
+                        <i class="fas fa-exchange-alt"></i> Convert
+                    </button>
+                    <button onclick="backToMenu()" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Menu
+                    </button>
+                </div>
+                <div id="unitResult" class="result-display hidden"></div>
+            </div>
+
+            <!-- Physics Calculator -->
+            <div id="physics" class="calculator hidden">
+                <h2 class="calculator-title"><i class="fas fa-atom"></i> Physics Calculator</h2>
+                <div class="form-group physics-category">
+                    <label for="physicsCategory">Physics Category</label>
+                    <select id="physicsCategory">
+                        <option value="kinematics">🏃 Kinematics</option>
+                        <option value="dynamics">⚡ Dynamics</option>
+                        <option value="energy">🔋 Energy and Work</option>
+                        <option value="electricity">⚡ Electricity</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button onclick="showPhysicsFormulas()" class="btn btn-primary">
+                        <i class="fas fa-list"></i> Select Category
+                    </button>
+                    <button onclick="backToMenu()" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Menu
+                    </button>
+                </div>
+                <div id="physicsFormulas"></div>
+            </div>
+
+            <!-- Number Tools -->
+            <div id="number" class="calculator hidden">
+                <h2 class="calculator-title"><i class="fas fa-hashtag"></i> Number Tools</h2>
+                <div class="form-group">
+                    <label for="numToolInput">Number</label>
+                    <input type="number" id="numToolInput" placeholder="Enter a number">
+                </div>
+                <div class="button-group">
+                    <button onclick="checkPrime()" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Check Prime
+                    </button>
+                    <button onclick="checkEvenOdd()" class="btn btn-secondary">
+                        <i class="fas fa-balance-scale"></i> Check Even/Odd
+                    </button>
+                    <button onclick="reverseNumber()" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Reverse Number
+                    </button>
+                    <button onclick="backToMenu()" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Menu
+                    </button>
+                </div>
+                <div id="numToolResult" class="result-display hidden"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
