@@ -487,3 +487,72 @@ input:focus, select:focus {
     width: auto;
     margin-right: 10px;
 }
+
+/* About Us Section */
+.about-section {
+    padding: 30px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+.about-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+}
+
+.about-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+.about-content {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+
+.about-content strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.about-content ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.about-content li {
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+/* Copyright Section */
+.copyright-section {
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright-section p {
+    margin: 0;
+    opacity: 0.9;
+}
