@@ -10,8 +10,16 @@
 <body>
     <div class="container">
         <div class="header">
+            <div class="logo-container">
+                <img src="file:///C:/Users/pc/Downloads/logo.png" alt="Student Utility Program Logo" class="site-logo" onclick="backToMenu()" style="cursor: pointer;">
+            </div>
             <h1><i class="fas fa-graduation-cap"></i> Student Utility Program</h1>
             <p>Your all-in-one academic companion</p>
+        </div>
+
+        <!-- Central Logo Watermark -->
+        <div class="central-logo">
+            <img src="file:///C:/Users/pc/Downloads/logo.png" alt="Student Utility Program Logo" class="central-logo-image">
         </div>
 
         <div id="menu" class="menu-section">
@@ -22,48 +30,49 @@
                         <span class="icon"><i class="fas fa-percentage"></i></span>
                         Percentage Calculator
                     </button>
+                    <p>This free percentage calculator helps students calculate their exam percentage quickly and accurately. Simply enter your marks and total marks to get instant results.</p>
                 </div>
                 <div class="menu-item">
                     <button onclick="showCalculator('cgpa')">
                         <span class="icon"><i class="fas fa-chart-line"></i></span>
                         CGPA Calculator
                     </button>
+                    <p>Calculate your Cumulative Grade Point Average (CGPA) easily. Enter the number of subjects and their respective grades to get your overall academic performance score.</p>
                 </div>
                 <div class="menu-item">
                     <button onclick="showCalculator('fibonacci')">
                         <span class="icon"><i class="fas fa-wave-square"></i></span>
                         Fibonacci Generator
                     </button>
+                    <p>Generate the famous Fibonacci sequence up to any number of terms. Perfect for learning about mathematical sequences and patterns in nature.</p>
                 </div>
                 <div class="menu-item">
                     <button onclick="showCalculator('factorial')">
                         <span class="icon"><i class="fas fa-calculator"></i></span>
                         Factorial Calculator
                     </button>
+                    <p>Compute factorial values for any non-negative integer. Essential for probability calculations, permutations, and combinations in mathematics.</p>
                 </div>
                 <div class="menu-item">
                     <button onclick="showCalculator('unit')">
                         <span class="icon"><i class="fas fa-exchange-alt"></i></span>
                         Unit Converter
                     </button>
+                    <p>Convert between different units of measurement including temperature, length, and weight. A versatile tool for science, engineering, and daily conversions.</p>
                 </div>
                 <div class="menu-item">
                     <button onclick="showCalculator('physics')">
                         <span class="icon"><i class="fas fa-atom"></i></span>
                         Physics Calculator
                     </button>
+                    <p>Solve physics problems across multiple categories including kinematics, dynamics, energy, and electricity. Perfect for physics students and problem-solving.</p>
                 </div>
                 <div class="menu-item">
                     <button onclick="showCalculator('number')">
                         <span class="icon"><i class="fas fa-hashtag"></i></span>
                         Number Tools
                     </button>
-                </div>
-                <div class="menu-item">
-                    <button onclick="exitProgram()" class="exit-btn">
-                        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-                        Exit Program
-                    </button>
+                    <p>Check if a number is prime, determine if it's even or odd, and reverse its digits. Essential utilities for number theory and basic mathematical operations.</p>
                 </div>
             </div>
         </div>
@@ -72,6 +81,7 @@
             <!-- Percentage Calculator -->
             <div id="percentage" class="calculator hidden">
                 <h2 class="calculator-title"><i class="fas fa-percentage"></i> Percentage Calculator</h2>
+                <p class="tool-description">This free percentage calculator helps students calculate their exam percentage quickly and accurately. Simply enter your marks and total marks to get instant results.</p>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="obtainedMarks">Obtained Marks</label>
@@ -96,6 +106,7 @@
             <!-- CGPA Calculator -->
             <div id="cgpa" class="calculator hidden">
                 <h2 class="calculator-title"><i class="fas fa-chart-line"></i> CGPA Calculator</h2>
+                <p class="tool-description">Calculate your Cumulative Grade Point Average (CGPA) easily. Enter the number of subjects and their respective grades to get your overall academic performance score.</p>
                 <div class="form-group">
                     <label for="numSubjects">Number of Subjects</label>
                     <input type="number" id="numSubjects" placeholder="Enter number of subjects">
@@ -120,6 +131,7 @@
             <!-- Fibonacci Generator -->
             <div id="fibonacci" class="calculator hidden">
                 <h2 class="calculator-title"><i class="fas fa-wave-square"></i> Fibonacci Generator</h2>
+                <p class="tool-description">Generate the famous Fibonacci sequence up to any number of terms. Perfect for learning about mathematical sequences and patterns in nature.</p>
                 <div class="form-group">
                     <label for="fibTerms">Number of Terms</label>
                     <input type="number" id="fibTerms" placeholder="Enter number of terms">
@@ -138,6 +150,7 @@
             <!-- Factorial Calculator -->
             <div id="factorial" class="calculator hidden">
                 <h2 class="calculator-title"><i class="fas fa-calculator"></i> Factorial Calculator</h2>
+                <p class="tool-description">Compute factorial values for any non-negative integer. Essential for probability calculations, permutations, and combinations in mathematics.</p>
                 <div class="form-group">
                     <label for="factNum">Number</label>
                     <input type="number" id="factNum" placeholder="Enter a non-negative integer">
@@ -156,6 +169,7 @@
             <!-- Unit Converter -->
             <div id="unit" class="calculator hidden">
                 <h2 class="calculator-title"><i class="fas fa-exchange-alt"></i> Unit Converter</h2>
+                <p class="tool-description">Convert between different units of measurement including temperature, length, and weight. A versatile tool for science, engineering, and daily conversions.</p>
                 <div class="form-group">
                     <label for="unitType">Conversion Type</label>
                     <select id="unitType">
@@ -179,6 +193,7 @@
             <!-- Physics Calculator -->
             <div id="physics" class="calculator hidden">
                 <h2 class="calculator-title"><i class="fas fa-atom"></i> Physics Calculator</h2>
+                <p class="tool-description">Solve physics problems across multiple categories including kinematics, dynamics, energy, and electricity. Perfect for physics students and problem-solving.</p>
                 <div class="form-group physics-category">
                     <label for="physicsCategory">Physics Category</label>
                     <select id="physicsCategory">
@@ -202,6 +217,7 @@
             <!-- Number Tools -->
             <div id="number" class="calculator hidden">
                 <h2 class="calculator-title"><i class="fas fa-hashtag"></i> Number Tools</h2>
+                <p class="tool-description">Check if a number is prime, determine if it's even or odd, and reverse its digits. Essential utilities for number theory and basic mathematical operations.</p>
                 <div class="form-group">
                     <label for="numToolInput">Number</label>
                     <input type="number" id="numToolInput" placeholder="Enter a number">
