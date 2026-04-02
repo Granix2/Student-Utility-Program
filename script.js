@@ -1,5 +1,6 @@
 // Global variables
 let cgpaSubjects = [];
+let physicsFormulas = {}; // Store formulas with preserved function references
 
 // Menu functions
 function showCalculator(type) {
@@ -279,8 +280,25 @@ function convertUnit() {
 }
 
 // Initialize unit converter
-document.getElementById('unitType').addEventListener('change', showUnitInputs);
-showUnitInputs();
+document.addEventListener('DOMContentLoaded', function() {
+    const unitTypeSelect = document.getElementById('unitType');
+    if (unitTypeSelect) {
+        unitTypeSelect.addEventListener('change', showUnitInputs);
+        showUnitInputs();
+    }
+});
+
+// Also try immediate initialization for compatibility
+if (document.readyState === 'loading') {
+    // DOM is still loading, wait for it
+    document.addEventListener('DOMContentLoaded', showUnitInputs);
+} else {
+    // DOM is already loaded
+    const unitTypeSelect = document.getElementById('unitType');
+    if (unitTypeSelect) {
+        showUnitInputs();
+    }
+}
 
 // Physics Calculator
 function showPhysicsFormulas() {
@@ -317,13 +335,19 @@ function showPhysicsFormulas() {
             break;
     }
 
+    // Store formulas in global object with preserved function references
+    physicsFormulas = {};
+    formulas.forEach((formula, index) => {
+        physicsFormulas[index] = formula;
+    });
+
     formulasDiv.innerHTML = formulas.map((formula, index) => `
         <div class="formula-card">
             <div class="formula-title">${formula.name}</div>
             <div class="formula-inputs">
                 ${formula.inputs.map(input => `<input type="number" placeholder="${input}" class="physics-input-${index}">`).join('')}
             </div>
-            <button onclick="calculatePhysics(${index}, ${JSON.stringify(formula.calc).replace(/"/g, '&quot;')})" class="btn btn-primary">
+            <button onclick="calculatePhysics(${index})" class="btn btn-primary">
                 <i class="fas fa-calculator"></i> Calculate
             </button>
             <div id="physics-result-${index}" class="result-display hidden"></div>
@@ -331,7 +355,13 @@ function showPhysicsFormulas() {
     `).join('');
 }
 
-function calculatePhysics(index, calcFunc) {
+function calculatePhysics(index) {
+    const formula = physicsFormulas[index];
+    if (!formula) {
+        showResult(`physics-result-${index}`, 'Error: Formula not found', true);
+        return;
+    }
+
     const inputs = document.querySelectorAll(`.physics-input-${index}`);
     const values = Array.from(inputs).map(input => parseFloat(input.value));
 
@@ -340,7 +370,7 @@ function calculatePhysics(index, calcFunc) {
         return;
     }
 
-    const result = calcFunc(...values);
+    const result = formula.calc(...values);
     showResult(`physics-result-${index}`, `Result: ${result.toFixed(2)}`);
 }
 
